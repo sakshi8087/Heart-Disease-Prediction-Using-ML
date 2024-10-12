@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #d9534f;
+        }
+
+        .result-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+        }
+
+        .no-disease {
+            color: #5cb85c;
+        }
+
+        .heart-disease {
+            color: #d9534f;
+        }
+
+        .precautions {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            padding: 10px 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="result-container">
+        <h1>Prediction Result</h1>
+        <p class="{{ 'no-disease' if result.prediction == 'No Heart Disease' else 'heart-disease' }}">
+            {{ result.prediction }}
+            {% if result.prediction == 'Heart Disease' %}
+            with a probability of {{ result.probability }}%.
+            {% endif %}
+        </p>
+
+        {% if result.prediction == 'Heart Disease' %}
+        <div class="precautions">
+            <h3>Precautions You Should Take:</h3>
+            <ul>
+                <li>Maintain a healthy diet with low salt, low fat, and plenty of vegetables and fruits.</li>
+                <li>Engage in regular physical activity, such as walking or light exercises.</li>
+                <li>Quit smoking and avoid secondhand smoke.</li>
+                <li>Keep your blood pressure, cholesterol, and blood sugar levels in check.</li>
+                <li>Manage stress through mindfulness, meditation, or relaxation techniques.</li>
+                <li>Follow your doctor's advice regarding medications and follow-up appointments.</li>
+            </ul>
+        </div>
+        {% endif %}
+        <a href="/">Go Back</a>
+    </div>
+</body>
+
+</html>
